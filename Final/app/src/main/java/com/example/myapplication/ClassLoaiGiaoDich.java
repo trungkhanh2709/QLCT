@@ -1,30 +1,26 @@
 package com.example.myapplication;
-
 public class ClassLoaiGiaoDich {
-    int maLoaiGiaoDich;
-    String tenLoaiGiaoDich;
+    private int MaLoaiGiaoDich;
+    private String TenLoaiGiaoDich;
 
     public ClassLoaiGiaoDich(int maLoaiGiaoDich, String tenLoaiGiaoDich) {
-        this.maLoaiGiaoDich = maLoaiGiaoDich;
-        this.tenLoaiGiaoDich = tenLoaiGiaoDich;
-    }
-
-    public ClassLoaiGiaoDich() {
+        MaLoaiGiaoDich = maLoaiGiaoDich;
+        TenLoaiGiaoDich = tenLoaiGiaoDich;
     }
 
     public int getMaLoaiGiaoDich() {
-        return maLoaiGiaoDich;
+        return MaLoaiGiaoDich;
     }
 
     public void setMaLoaiGiaoDich(int maLoaiGiaoDich) {
-        this.maLoaiGiaoDich = maLoaiGiaoDich;
+        MaLoaiGiaoDich = maLoaiGiaoDich;
     }
 
     public String getTenLoaiGiaoDich() {
-        return tenLoaiGiaoDich;
+        return TenLoaiGiaoDich;
     }
 
     public void setTenLoaiGiaoDich(String tenLoaiGiaoDich) {
-        this.tenLoaiGiaoDich = tenLoaiGiaoDich;
+        TenLoaiGiaoDich = tenLoaiGiaoDich;
     }
 }

@@ -2,83 +2,68 @@ package com.example.myapplication;
 
 import java.math.BigDecimal;
 import java.util.Date;
-
 public class ClassGiaoDich {
-    int maGiaoDich;
-    int loaiGiaoDich;
-    Date ngayGiaoDich;
-    String dienGiai;
-    //không có kiểu money trong Java nên t để bigdecimal đỡ vậy
-    BigDecimal soTien;
-    int viGiaoDich;
-    int maHangMuc;
+    private int MaGiaoDich;
+    private int MaHangMuc;
+    private Date NgayGiaoDich;
+    private String DienGiai;
+    private BigDecimal Sotien;
+    private int ViGiaoDich;
 
-    public ClassGiaoDich(int maGiaoDich, int loaiGiaoDich, Date ngayGiaoDich, String dienGiai, BigDecimal soTien, int viGiaoDich, int maHangMuc) {
-        this.maGiaoDich = maGiaoDich;
-        this.loaiGiaoDich = loaiGiaoDich;
-        this.ngayGiaoDich = ngayGiaoDich;
-        this.dienGiai = dienGiai;
-        this.soTien = soTien;
-        this.viGiaoDich = viGiaoDich;
-        this.maHangMuc = maHangMuc;
+    public ClassGiaoDich(int maGiaoDich, int maHangMuc, Date ngayGiaoDich, String dienGiai, BigDecimal sotien, int viGiaoDich) {
+        MaGiaoDich = maGiaoDich;
+        MaHangMuc = maHangMuc;
+        NgayGiaoDich = ngayGiaoDich;
+        DienGiai = dienGiai;
+        Sotien = sotien;
+        ViGiaoDich = viGiaoDich;
     }
 
     public int getMaGiaoDich() {
-        return maGiaoDich;
+        return MaGiaoDich;
     }
 
     public void setMaGiaoDich(int maGiaoDich) {
-        this.maGiaoDich = maGiaoDich;
-    }
-
-    public int getLoaiGiaoDich() {
-        return loaiGiaoDich;
-    }
-
-    public void setLoaiGiaoDich(int loaiGiaoDich) {
-        this.loaiGiaoDich = loaiGiaoDich;
-    }
-
-    public Date getNgayGiaoDich() {
-        return ngayGiaoDich;
-    }
-
-    public void setNgayGiaoDich(Date ngayGiaoDich) {
-        this.ngayGiaoDich = ngayGiaoDich;
-    }
-
-    public String getDienGiai() {
-        return dienGiai;
-    }
-
-    public void setDienGiai(String dienGiai) {
-        this.dienGiai = dienGiai;
-    }
-
-    public BigDecimal getSoTien() {
-        return soTien;
-    }
-
-    public void setSoTien(BigDecimal soTien) {
-        this.soTien = soTien;
-    }
-
-    public int getViGiaoDich() {
-        return viGiaoDich;
-    }
-
-    public void setViGiaoDich(int viGiaoDich) {
-        this.viGiaoDich = viGiaoDich;
+        MaGiaoDich = maGiaoDich;
     }
 
     public int getMaHangMuc() {
-        return maHangMuc;
+        return MaHangMuc;
     }
 
     public void setMaHangMuc(int maHangMuc) {
-        this.maHangMuc = maHangMuc;
+        MaHangMuc = maHangMuc;
     }
 
-    public ClassGiaoDich() {
+    public Date getNgayGiaoDich() {
+        return NgayGiaoDich;
+    }
+
+    public void setNgayGiaoDich(Date ngayGiaoDich) {
+        NgayGiaoDich = ngayGiaoDich;
+    }
+
+    public String getDienGiai() {
+        return DienGiai;
+    }
+
+    public void setDienGiai(String dienGiai) {
+        DienGiai = dienGiai;
+    }
+
+    public BigDecimal getSotien() {
+        return Sotien;
+    }
+
+    public void setSotien(BigDecimal sotien) {
+        Sotien = sotien;
+    }
+
+    public int getViGiaoDich() {
+        return ViGiaoDich;
+    }
+
+    public void setViGiaoDich(int viGiaoDich) {
+        ViGiaoDich = viGiaoDich;
     }
 }

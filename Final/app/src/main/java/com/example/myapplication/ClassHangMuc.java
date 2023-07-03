@@ -1,39 +1,37 @@
 package com.example.myapplication;
 
 public class ClassHangMuc {
-    int maHangMuc, maLoaiGiaoDich;
-    String tenHangMuc;
+    private int MaHangMuc;
+    private int LoaiHangMuc;
+    private String TenHangMuc;
 
-    public ClassHangMuc(int maHangMuc, int maLoaiGiaoDich, String tenHangMuc) {
-        this.maHangMuc = maHangMuc;
-        this.maLoaiGiaoDich = maLoaiGiaoDich;
-        this.tenHangMuc = tenHangMuc;
-    }
-
-    public ClassHangMuc() {
+    public ClassHangMuc(int maHangMuc, int loaiHangMuc, String tenHangMuc) {
+        MaHangMuc = maHangMuc;
+        LoaiHangMuc = loaiHangMuc;
+        TenHangMuc = tenHangMuc;
     }
 
     public int getMaHangMuc() {
-        return maHangMuc;
+        return MaHangMuc;
     }
 
     public void setMaHangMuc(int maHangMuc) {
-        this.maHangMuc = maHangMuc;
+        MaHangMuc = maHangMuc;
     }
 
-    public int getMaLoaiGiaoDich() {
-        return maLoaiGiaoDich;
+    public int getLoaiHangMuc() {
+        return LoaiHangMuc;
     }
 
-    public void setMaLoaiGiaoDich(int maLoaiGiaoDich) {
-        this.maLoaiGiaoDich = maLoaiGiaoDich;
+    public void setLoaiHangMuc(int loaiHangMuc) {
+        LoaiHangMuc = loaiHangMuc;
     }
 
     public String getTenHangMuc() {
-        return tenHangMuc;
+        return TenHangMuc;
     }
 
     public void setTenHangMuc(String tenHangMuc) {
-        this.tenHangMuc = tenHangMuc;
+        TenHangMuc = tenHangMuc;
     }
 }
