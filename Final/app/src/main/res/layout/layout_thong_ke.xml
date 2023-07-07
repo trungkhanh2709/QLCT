@@ -48,43 +48,28 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="146dp"
-                android:layout_height="43dp" />
         </LinearLayout>
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#454545"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:text="Tổng tiền"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/txtTongSoTien"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text="TextView"
-                android:textColor="#FFFFFF" />
-
-        </LinearLayout>
+            android:text="TextView" />
 
         <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/barChart"
             android:layout_width="match_parent"
-            android:layout_height="500dp" />
+            android:layout_height="350dp"
+            android:layout_marginTop="20dp" >
+
+        </com.github.mikephil.charting.charts.BarChart>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/reThongKe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:scrollbars="vertical" />
 
     </LinearLayout>
 

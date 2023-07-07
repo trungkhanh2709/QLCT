@@ -1,12 +1,14 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.AxisBase;
@@ -17,14 +19,22 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 
+import org.apache.commons.collections4.Get;
+
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class ThongKe extends AppCompatActivity {
     SQLiteDatabase database;
-    TextView txtTongSoTien;
+    TextView txtThu,txtChi,txtTongTien;
     BarChart Chart;
+    RecyclerView reThongKe;
+    ArrayList<ClassGiaoDich> classGiaoDichList;
+    Custom_Adapter_Giao_Dich adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,37 +42,81 @@ public class ThongKe extends AppCompatActivity {
         setContentView(R.layout.layout_thong_ke);
 
         DatabaseHelper databaseHelper = new DatabaseHelper(this);
-
+        databaseHelper.deleteDatabase(this);
         database = databaseHelper.getWritableDatabase();
         AddControl();
 
 //        BigDecimal tongSoTien = getTongSoTien(database);
 //        txtTongSoTien.setText(tongSoTien.toString());
-//
-//
-//
-//        List<BarEntry> entries = new ArrayList<>();
-//        for (int i=0; i<= 12; i++){
-////            entries.add( new BarEntry(i,new float[]))
-//        }
-//        entries.add(new BarEntry(0, new float[]{-4, 4}));  // Giá trị âm và dương
-//
-//        SetChart(entries);
+
+
+        GetMoney();
+//        showListPerMonth(database);
+        showListPerMonth(database);
+    }
+    private void AddControl(){
+        txtChi = (TextView) findViewById(R.id.txtChi);
+        txtTongTien = (TextView) findViewById(R.id.txtTongTien);
+        txtThu = (TextView) findViewById(R.id.txtThu);
+        Chart = findViewById(R.id.barChart);
+        reThongKe = findViewById(R.id.reThongKe);
 
     }
-    private BigDecimal getSoTienThu(SQLiteDatabase database){
-        String querry = "SELECT * FROM giaodich WHERE strftime('%Y', ngaygiaodich) = '2023' and mahangmuc =1 ";
-        Cursor cursor = database.rawQuery(querry,null);
+    private BigDecimal GetThu(int i){
         BigDecimal thuTien = BigDecimal.ZERO;
-        if (cursor.moveToFirst()){
-            double sum = cursor.getDouble(0);
-            thuTien = BigDecimal.valueOf(sum);
-        }
-        cursor.close();
+            String month = (i < 10) ? "0" + i : String.valueOf(i);
+            String posNum = "SELECT sum(sotien) FROM giaodich WHERE strftime('%m', ngaygiaodich) = '" + month + "' and MaHangMuc=1";
+
+            Cursor cursor = database.rawQuery(posNum, null);
+            if (cursor.moveToFirst()) {
+                double sum = cursor.getDouble(0);
+                thuTien = BigDecimal.valueOf(sum);
+            }
+            cursor.close();
+
         return thuTien;
     }
+    private BigDecimal GetChi(int i){
+        BigDecimal chiTien = BigDecimal.ZERO;
+            String month = (i < 10) ? "0" + i : String.valueOf(i);
+            String neNum = "SELECT sum(sotien) FROM giaodich WHERE strftime('%m', ngaygiaodich) = '" + month + "' and MaHangMuc=2";
+
+            Cursor cursor = database.rawQuery(neNum, null);
+            if (cursor.moveToFirst()) {
+                double sum = cursor.getDouble(0);
+                chiTien = BigDecimal.valueOf(sum);
+                chiTien.negate();
+            }
+            cursor.close();
+        return chiTien;
+    }
+
+    private void GetMoney(){
+
+
+        BigDecimal chiTien = BigDecimal.ZERO;
+        BigDecimal thuTien = BigDecimal.ZERO;
+        List<BarEntry> entries = new ArrayList<>();
+        for (int i = 1; i <= 12; i++) {
+            chiTien= GetChi(i).negate();
+            thuTien = GetThu(i);
+            BigDecimal[] values = new BigDecimal[]{thuTien, chiTien};
+            float[] floatValues = new float[values.length];
+            for (int u = 0; u < values.length; u++) {
+                floatValues[u] = values[u].floatValue();
+            }
+            entries.add(new BarEntry(i-1, floatValues));
+        }
+
+        setChart(entries);
+
+    }
     private BigDecimal getTongSoTien(SQLiteDatabase database){
-        String querry = "SELECT SUM(Sotien) FROM GiaoDich";
+
+        /////Cái này chưa chắc đúng
+
+
+        String querry = "SELECT SUM(Sotien) FROM GiaoDich where mahangmuc = 1";
         Cursor cursor = database.rawQuery(querry, null);
         BigDecimal tongSoTien = BigDecimal.ZERO;
         if (cursor.moveToFirst()){
@@ -72,33 +126,47 @@ public class ThongKe extends AppCompatActivity {
         cursor.close();
         return tongSoTien;
     }
-    private void SetChart(List<BarEntry> entries){
+    private void setChart(List<BarEntry> entries){
+// Tạo dataset
 
         BarDataSet dataSet = new BarDataSet(entries, "Data Label");
-        dataSet.setColors(new int[]{Color.parseColor("#FF7474"),  Color.parseColor("#38C976")}); // Màu đỏ cho cột dưới, màu xanh lá cho cột trên
+        dataSet.setColors(new int[]{ Color.parseColor("#38C976"),Color.parseColor("#FF7474")});
+        dataSet.setValueTextColor(Color.WHITE);
 
+
+        // Tạo dữ liệu biểu đồ
         BarData barData = new BarData(dataSet);
 
+        // Cấu hình trục X
         XAxis xAxis = Chart.getXAxis();
         xAxis.setValueFormatter(new XAxisValueFormatter());
 
+        // Cấu hình trục Y bên trái
         YAxis leftAxis = Chart.getAxisLeft();
-        YAxis rightAxis = Chart.getAxisRight();
-
-        leftAxis.setAxisMinimum(-10);
-        leftAxis.setAxisMaximum(10);
         leftAxis.setDrawGridLines(false);
-        rightAxis.setEnabled(false);
+        leftAxis.setTextColor(Color.WHITE);
 
+        // Tắt trục Y bên phải
+//        Chart.getAxisRight().setEnabled(false);
+
+        // Tắt chú giải và mô tả
         Chart.getLegend().setEnabled(false);
         Chart.getDescription().setEnabled(false);
+
+        // Tắt khả năng tự điều chỉnh tỷ lệ biểu đồ và tương tác
         Chart.setScaleEnabled(false);
         Chart.setTouchEnabled(false);
 
+        // Cấu hình độ tỉ mỉ và vị trí của trục X
         xAxis.setGranularity(1f);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
 
-        Chart.getXAxis().setGranularity(1f);
+        // Đặt màu chữ cho trục X và trục Y
+        Chart.getXAxis().setTextColor(Color.WHITE);
+        Chart.getAxisLeft().setTextColor(Color.WHITE);
+        Chart.getAxisRight().setTextColor(Color.WHITE);
+
+        // Áp dụng dữ liệu biểu đồ và làm mới
         Chart.setData(barData);
         Chart.invalidate();
     }
@@ -117,18 +185,30 @@ public class ThongKe extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
         // Đóng kết nối với cơ sở dữ liệu khi không cần sử dụng nữa
         if (database != null) {
             database.close();
         }
     }
-    private void AddEvent(){
+    private void showListPerMonth(SQLiteDatabase database){
+        classGiaoDichList = new ArrayList<>();
 
-    }
-    private void AddControl(){
-        txtTongSoTien = (TextView) findViewById(R.id.txtTongSoTien);
-        Chart = findViewById(R.id.barChart);
+        BigDecimal tienThu = BigDecimal.ZERO;
+        BigDecimal tienChi= BigDecimal.ZERO;
+        BigDecimal tienConLai = BigDecimal.ZERO;
+        for (int i = 1; i<=12;i++){
+            tienThu=GetThu(i);
+            tienChi = GetChi(i);
+            tienConLai= tienThu.subtract(tienChi);
+            classGiaoDichList.add(new ClassGiaoDich(tienThu,tienChi,tienConLai, i));
+
+        }
+        adapter = new Custom_Adapter_Giao_Dich(this, classGiaoDichList);
+
+        // Cấu hình RecyclerView
+        reThongKe.setLayoutManager(new LinearLayoutManager(this));
+        reThongKe.setAdapter(adapter);
 
     }
 }
+

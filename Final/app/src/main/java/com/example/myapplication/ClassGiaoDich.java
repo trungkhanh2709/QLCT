@@ -9,14 +9,39 @@ public class ClassGiaoDich {
     private String DienGiai;
     private BigDecimal Sotien;
     private int ViGiaoDich;
+    BigDecimal tienThu;
+    BigDecimal tienChi;
+    BigDecimal tongTien;
+    int thang;
 
-    public ClassGiaoDich(int maGiaoDich, int maHangMuc, Date ngayGiaoDich, String dienGiai, BigDecimal sotien, int viGiaoDich) {
+    public ClassGiaoDich() {
+
+    }
+
+    public ClassGiaoDich(int maGiaoDich, int maHangMuc, Date ngayGiaoDich, String dienGiai, BigDecimal sotien, int viGiaoDich,BigDecimal tienThu, BigDecimal tienChi, BigDecimal tongTien) {
         MaGiaoDich = maGiaoDich;
         MaHangMuc = maHangMuc;
         NgayGiaoDich = ngayGiaoDich;
         DienGiai = dienGiai;
         Sotien = sotien;
         ViGiaoDich = viGiaoDich;
+        this.tienThu = tienThu;
+        this.tienChi = tienChi;
+        this.tongTien = tongTien;
+    }
+    public ClassGiaoDich(BigDecimal tienThu, BigDecimal tienChi, BigDecimal tongTien, int thang) {
+        this.tienThu = tienThu;
+        this.tienChi = tienChi;
+        this.tongTien = tongTien;
+        this.thang = thang;
+    }
+
+    public int getThang() {
+        return thang;
+    }
+
+    public void setThang(int thang) {
+        this.thang = thang;
     }
 
     public int getMaGiaoDich() {
@@ -36,7 +61,7 @@ public class ClassGiaoDich {
     }
 
     public Date getNgayGiaoDich() {
-        return NgayGiaoDich;
+        return  NgayGiaoDich;
     }
 
     public void setNgayGiaoDich(Date ngayGiaoDich) {
@@ -65,5 +90,31 @@ public class ClassGiaoDich {
 
     public void setViGiaoDich(int viGiaoDich) {
         ViGiaoDich = viGiaoDich;
+    }
+
+    public BigDecimal getTienThu() {
+        return tienThu;
+    }
+
+    public void setTienThu(BigDecimal tienThu) {
+        this.tienThu = tienThu;
+    }
+
+    public BigDecimal getTienChi() {
+        return tienChi;
+    }
+
+    public void setTienChi(BigDecimal tienChi) {
+        this.tienChi = tienChi;
+    }
+
+    public BigDecimal getTongTien() {
+        return tongTien;
+    }
+
+
+
+    public void setTongTien(BigDecimal tongTien) {
+        this.tongTien = tongTien;
     }
 }

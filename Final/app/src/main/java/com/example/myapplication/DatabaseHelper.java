@@ -77,8 +77,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 // Tạo dữ liệu mẫu cho bảng GiaoDich
         db.execSQL("INSERT INTO GiaoDich (MaHangMuc, NgayGiaoDich, DienGiai, Sotien, ViGiaoDich) VALUES (1, '2023-07-01', 'Giao dịch 1', 100.0, 1)");
-        db.execSQL("INSERT INTO GiaoDich (MaHangMuc, NgayGiaoDich, DienGiai, Sotien, ViGiaoDich) VALUES (2, '2023-07-02', 'Giao dịch 2', 200.0, 2)");
-
+        db.execSQL("INSERT INTO GiaoDich (MaHangMuc, NgayGiaoDich, DienGiai, Sotien, ViGiaoDich) VALUES (2, '2023-06-02', 'Giao dịch 2', 200.0, 2)");
+        db.execSQL("INSERT INTO GiaoDich (MaHangMuc, NgayGiaoDich, DienGiai, Sotien, ViGiaoDich) VALUES (1, '2023-05-03', 'Giao dịch 3', 300.0, 1)");
+        db.execSQL("INSERT INTO GiaoDich (MaHangMuc, NgayGiaoDich, DienGiai, Sotien, ViGiaoDich) VALUES (1, '2023-04-04', 'Giao dịch 4', 400.0, 2)");
+        db.execSQL("INSERT INTO GiaoDich (MaHangMuc, NgayGiaoDich, DienGiai, Sotien, ViGiaoDich) VALUES (1, '2023-01-05', 'Giao dịch 5', 500.0, 1)");
+        db.execSQL("INSERT INTO GiaoDich (MaHangMuc, NgayGiaoDich, DienGiai, Sotien, ViGiaoDich) VALUES (2, '2023-03-06', 'Giao dịch 6', 600.0, 2)");
+        db.execSQL("INSERT INTO GiaoDich (MaHangMuc, NgayGiaoDich, DienGiai, Sotien, ViGiaoDich) VALUES (1, '2023-02-07', 'Giao dịch 7', 700.0, 1)");
+        db.execSQL("INSERT INTO GiaoDich (MaHangMuc, NgayGiaoDich, DienGiai, Sotien, ViGiaoDich) VALUES (1, '2023-07-08', 'Giao dịch 8', 800.0, 2)");
+        db.execSQL("INSERT INTO GiaoDich (MaHangMuc, NgayGiaoDich, DienGiai, Sotien, ViGiaoDich) VALUES (2, '2023-08-09', 'Giao dịch 9', 900.0, 1)");
+        db.execSQL("INSERT INTO GiaoDich (MaHangMuc, NgayGiaoDich, DienGiai, Sotien, ViGiaoDich) VALUES (1, '2023-09-10', 'Giao dịch 10', 1000.0, 2)");
+        db.execSQL("INSERT INTO GiaoDich (MaHangMuc, NgayGiaoDich, DienGiai, Sotien, ViGiaoDich) VALUES (1, '2023-10-11', 'Giao dịch 11', 1100.0, 1)");
+        db.execSQL("INSERT INTO GiaoDich (MaHangMuc, NgayGiaoDich, DienGiai, Sotien, ViGiaoDich) VALUES (2, '2023-11-12', 'Giao dịch 12', 1200.0, 2)");
+        db.execSQL("INSERT INTO GiaoDich (MaHangMuc, NgayGiaoDich, DienGiai, Sotien, ViGiaoDich) VALUES (1, '2023-07-13', 'Giao dịch 13', 1300.0, 1)");
+        db.execSQL("INSERT INTO GiaoDich (MaHangMuc, NgayGiaoDich, DienGiai, Sotien, ViGiaoDich) VALUES (2, '2023-12-14', 'Giao dịch 14', 1400.0, 2)");
+        db.execSQL("INSERT INTO GiaoDich (MaHangMuc, NgayGiaoDich, DienGiai, Sotien, ViGiaoDich) VALUES (1, '2023-04-15', 'Giao dịch 15', 1500.0, 1)");
+        db.execSQL("INSERT INTO GiaoDich (MaHangMuc, NgayGiaoDich, DienGiai, Sotien, ViGiaoDich) VALUES (1, '2023-03-16', 'Giao dịch 16', 1600.0, 2)");
+        db.execSQL("INSERT INTO GiaoDich (MaHangMuc, NgayGiaoDich, DienGiai, Sotien, ViGiaoDich) VALUES (1, '2023-02-17', 'Giao dịch 17', 1700.0, 1)");
+        db.execSQL("INSERT INTO GiaoDich (MaHangMuc, NgayGiaoDich, DienGiai, Sotien, ViGiaoDich) VALUES (2, '2023-01-18', 'Giao dịch 18', 1800.0, 2)");
+        db.execSQL("INSERT INTO GiaoDich (MaHangMuc, NgayGiaoDich, DienGiai, Sotien, ViGiaoDich) VALUES (1, '2023-12-05', 'Giao dịch 19', 500.0, 1)");
+        db.execSQL("INSERT INTO GiaoDich (MaHangMuc, NgayGiaoDich, DienGiai, Sotien, ViGiaoDich) VALUES (1, '2023-11-06', 'Giao dịch 20', 600.0, 2)");
+        db.execSQL("INSERT INTO GiaoDich (MaHangMuc, NgayGiaoDich, DienGiai, Sotien, ViGiaoDich) VALUES (1, '2023-05-06', 'Giao dịch 21', 600.0, 1)");
+        db.execSQL("INSERT INTO GiaoDich (MaHangMuc, NgayGiaoDich, DienGiai, Sotien, ViGiaoDich) VALUES (1, '2023-05-06', 'Giao dịch 21', 500.0, 1)");
+        db.execSQL("INSERT INTO GiaoDich (MaHangMuc, NgayGiaoDich, DienGiai, Sotien, ViGiaoDich) VALUES (2, '2023-04-06', 'Giao dịch 21', 1000.0, 1)");
     }
 
 }
