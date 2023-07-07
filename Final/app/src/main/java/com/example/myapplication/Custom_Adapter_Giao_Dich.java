@@ -5,20 +5,14 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 public class Custom_Adapter_Giao_Dich extends RecyclerView.Adapter<Custom_Adapter_Giao_Dich.ViewHolder> {
@@ -82,10 +76,10 @@ public class Custom_Adapter_Giao_Dich extends RecyclerView.Adapter<Custom_Adapte
 
         public ViewHolder(View itemView) {
             super(itemView);
-            txtThu = itemView.findViewById(R.id.txtThu);
-            txtChi = itemView.findViewById(R.id.txtChi);
-            txtTongTien = itemView.findViewById(R.id.txtTongTien);
-            txtThang = itemView.findViewById(R.id.txtThang);
+            txtThu = itemView.findViewById(R.id.txttxtItemMoneyPerMonthThu);
+            txtChi = itemView.findViewById(R.id.txttxtItemMoneyPerMonthChi);
+            txtTongTien = itemView.findViewById(R.id.txttxtItemMoneyPerMonthTongTien);
+            txtThang = itemView.findViewById(R.id.txtItemMoneyPerMonth);
         }
     }
 }

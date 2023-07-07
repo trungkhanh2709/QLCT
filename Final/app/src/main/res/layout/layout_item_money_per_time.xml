@@ -14,7 +14,7 @@
         android:background="#454545">
 
         <TextView
-            android:id="@+id/txtThang"
+            android:id="@+id/txtItemMoneyPerMonth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
@@ -30,7 +30,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txtThu"
+                android:id="@+id/txttxtItemMoneyPerMonthThu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right|center_vertical"
@@ -39,7 +39,7 @@
                 android:textColor="#38C976" />
 
             <TextView
-                android:id="@+id/txtChi"
+                android:id="@+id/txttxtItemMoneyPerMonthChi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -57,7 +57,7 @@
                 android:background="@drawable/line" />
 
             <TextView
-                android:id="@+id/txtTongTien"
+                android:id="@+id/txttxtItemMoneyPerMonthTongTien"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"

@@ -19,13 +19,8 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 
-import org.apache.commons.collections4.Get;
-
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class ThongKe extends AppCompatActivity {
@@ -55,9 +50,9 @@ public class ThongKe extends AppCompatActivity {
         showListPerMonth(database);
     }
     private void AddControl(){
-        txtChi = (TextView) findViewById(R.id.txtChi);
-        txtTongTien = (TextView) findViewById(R.id.txtTongTien);
-        txtThu = (TextView) findViewById(R.id.txtThu);
+        txtChi = (TextView) findViewById(R.id.txttxtItemMoneyPerMonthChi);
+        txtTongTien = (TextView) findViewById(R.id.txttxtItemMoneyPerMonthTongTien);
+        txtThu = (TextView) findViewById(R.id.txttxtItemMoneyPerMonthThu);
         Chart = findViewById(R.id.barChart);
         reThongKe = findViewById(R.id.reThongKe);
 
