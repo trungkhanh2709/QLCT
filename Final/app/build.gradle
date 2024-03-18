@@ -1,5 +1,7 @@
 plugins {
     id 'com.android.application'
+    id "org.sonarqube" version "4.4.1.3373"
+
 }
 
 android {
@@ -15,7 +17,13 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
+sonar {
+  properties {
+    property "sonar.projectKey", "trungkhanh2709_QLCT"
+    property "sonar.organization", "trungkhanh2709"
+    property "sonar.host.url", "https://sonarcloud.io"
+  }
+}
     buildTypes {
         release {
             minifyEnabled false
