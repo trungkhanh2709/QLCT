@@ -38,28 +38,19 @@ public class ChiFragmentChiTietThongKe extends Fragment {
     int thang;
     String user = "user1";
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
+
     private String mParam1;
     private String mParam2;
 
     public ChiFragmentChiTietThongKe() {
-        // Required empty public constructor
+
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     *
-     * @return A new instance of fragment ChiFragmentChiTietThongKe.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static ChiFragmentChiTietThongKe newInstance(int param1) {
         ChiFragmentChiTietThongKe fragment = new ChiFragmentChiTietThongKe();
         Bundle args = new Bundle();
@@ -93,8 +84,8 @@ public class ChiFragmentChiTietThongKe extends Fragment {
 
         cursor.close();
     }
-    private BigDecimal getSoTienTungHanMucChi(String TenLoaiHangMuc, int thang,String user){
-        BigDecimal TongSoTien = BigDecimal.ZERO;
+    private BigDecimal getSoTienTungHanMucChi(String tenLoaiHangMuc, int thang,String user){
+        BigDecimal tongSoTien = BigDecimal.ZERO;
         String month = (thang < 10) ? "0" + thang : String.valueOf(thang);
         String querry = "select sum(Sotien) from GiaoDich gd, HangMuc hm, LoaiHangMuc lhm, LoaiGiaoDich lgd , Account ac, vi vi " +
                 "where lhm.TenLoaiHangMuc='"+TenLoaiHangMuc+"' and ac.UserName = '"+ user+ "'and strftime('%m', ngaygiaodich) = '"+month+"' " +
@@ -107,7 +98,7 @@ public class ChiFragmentChiTietThongKe extends Fragment {
 
         }
         cursor.close();
-        return TongSoTien;
+        return tongSoTien;
     }
 
     @Override
@@ -148,7 +139,7 @@ public class ChiFragmentChiTietThongKe extends Fragment {
 
     }
     private BigDecimal getTongSoTien(int thang, String user){
-        BigDecimal TongSoTien = BigDecimal.ZERO;
+        BigDecimal tongSoTien = BigDecimal.ZERO;
         String month = (thang < 10) ? "0" + thang : String.valueOf(thang);
         String querry = "select sum(Sotien) from GiaoDich gd, HangMuc hm, LoaiHangMuc lhm, LoaiGiaoDich lgd , Account ac, Vi vi " +
                 "where ac.UserName = '"+user+"'and strftime('%m', ngaygiaodich) =  '"+month+"' and lgd.MaLoaiGiaoDich =1 and gd.ViGiaoDich = vi.MaVi  and " +
@@ -156,23 +147,23 @@ public class ChiFragmentChiTietThongKe extends Fragment {
         Cursor cursor = database.rawQuery(querry, null);
         if (cursor.moveToFirst()) {
             double sum = cursor.getDouble(0);
-            TongSoTien = BigDecimal.valueOf(sum);
+            tongSoTien = BigDecimal.valueOf(sum);
 
         }
         cursor.close();
         return TongSoTien;
     }
 
-    private void CreateCircleChart(){
+    private void createCircleChart(){
         List<PieEntry> entries = new ArrayList<>();
-        BigDecimal TongSoTienCuaTungHangMuc = BigDecimal.ZERO;
-        BigDecimal TongSoTien = BigDecimal.ZERO;
+        BigDecimal tongSoTienCuaTungHangMuc = BigDecimal.ZERO;
+        BigDecimal tongSoTien = BigDecimal.ZERO;
 
         for (int i = 0; i < tenLoaiHangMucList.size(); i++) {
             String tenLoaiHangMuc = tenLoaiHangMucList.get(i);
-            TongSoTienCuaTungHangMuc = getSoTienTungHanMucChi(tenLoaiHangMuc,thang,user);
-            TongSoTien = getTongSoTien(thang,user);
-            BigDecimal percent = TongSoTienCuaTungHangMuc.divide(TongSoTien, 2, RoundingMode.HALF_UP)
+            tongSoTienCuaTungHangMuc = getSoTienTungHanMucChi(tenLoaiHangMuc,thang,user);
+            tongSoTien = getTongSoTien(thang,user);
+            BigDecimal percent = TongSoTienCuaTungHangMuc.divide(tongSoTien, 2, RoundingMode.HALF_UP)
                     .multiply(BigDecimal.valueOf(100));
             entries.add(new PieEntry(percent.floatValue(), tenLoaiHangMuc));
         }
@@ -207,7 +198,7 @@ public class ChiFragmentChiTietThongKe extends Fragment {
 
 
 
-    private void AddControl(View view){
+    private void addControl(View view){
         pieChart = view.findViewById(R.id.pieChart);
     }
 }
